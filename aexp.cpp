@@ -4,6 +4,45 @@
 //aexp(double a11[3],double a12[3],double a13[3],double a14[3],double a15[3],double a16[3],double a17[3],double a18[3],double a19[3])
 aexp(double aval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
 {
+
+double meu1=meu[0];
+double meu2=meu[1];
+double meu3=meu[2];
+double meu4=meu[3];
+double meu5=meu[4];
+double meu6=meu[5];
+
+double lam1=lam[0];
+double lam2=lam[1];
+double lam3=lam[2];
+double lam4=lam[3];
+double lam5=lam[4];
+double lam6=lam[5];
+
+
+double a1=a[0];
+double a2=a[1];
+double a3=a[2];
+double a4=a[3];
+double a5=a[4];
+double a6=a[5];
+
+double d1=d[0];
+double d2=d[1];
+double d3=d[2];
+double d4=d[3];
+double d5=d[4];
+double d6=d[5];
+
+double u= u_r[0];
+double v= u_r[1];
+double w= u_r[2];
+double p= u_r[3];
+double q= u_r[4];
+double r= u_r[5];
+
+
+
 	double a11[]={-2*a1*lam2*lam3*lam4*lam5*pow(p,2) + 2*a1*lam4*lam5*meu2*meu3*pow(p,2) - 
 2*a1*lam3*lam5*meu2*meu4*pow(p,2) - 2*a1*lam2*lam5*meu3*meu4*pow(p,2) + 2*a1*lam3*lam4*meu2*meu5*pow(p,2) + 
 2*a1*lam2*lam4*meu3*meu5*pow(p,2) - 2*a1*lam2*lam3*meu4*meu5*pow(p,2) + 2*a1*meu2*meu3*meu4*meu5*pow(p,2) - 
