@@ -1,4 +1,5 @@
 # include <iostream>
+# include <math.h>
 
 //aexp(double a11[3],double a12[3],double a13[3],double a14[3],double a15[3],double a16[3],double a17[3],double a18[3],double a19[3])
 aexp(double aval[9][3])

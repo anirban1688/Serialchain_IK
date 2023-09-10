@@ -1,3 +1,11 @@
+# include <iostream>
+# include <math.h>
+
+
+//bexp(double b11[3],double b12[3],double b13[3],double b14[3],double b15[3],double b16[3],double b17[3],double b18[3],double b19[3])
+bexp(double bval[9][3])
+{
+
 double b11[]={-(a1*lam2*lam3*lam4*lam5*p*u) + a1*lam4*lam5*meu2*meu3*p*u - a1*lam3*lam5*meu2*meu4*p*u - 
 a1*lam2*lam5*meu3*meu4*p*u + a1*lam3*lam4*meu2*meu5*p*u + a1*lam2*lam4*meu3*meu5*p*u - 
 a1*lam2*lam3*meu4*meu5*p*u + a1*meu2*meu3*meu4*meu5*p*u - d5*lam5*meu1*q*u - d4*lam4*lam5*meu1*q*u - 
@@ -251,3 +259,45 @@ a1*d2*pow(v,2) + a1*d1*lam1*pow(v,2) + a1*d3*lam2*pow(v,2) + a1*d4*lam2*lam3*pow
 a1*d5*lam2*lam3*lam4*pow(v,2) + a1*d4*meu2*meu3*pow(v,2) + a1*d5*lam4*meu2*meu3*pow(v,2) + 
 a1*d5*lam3*meu2*meu4*pow(v,2) - a1*d5*lam2*meu3*meu4*pow(v,2) - meu1*p*q*pow(v,2) - a1*lam1*r*pow(v,2) + 
 a1*lam1*p*u*w - d1*meu1*q*u*w + meu1*q*r*u*w + d1*meu1*p*v*w + a1*lam1*q*v*w - meu1*p*r*v*w};
+
+
+	i=0;
+	for(j=0;j<3;j++)
+		bval[i][j]=b11[j];
+
+	i=1;
+	for(j=0;j<3;j++)
+		bval[i][j]=b12[j];
+
+	i=2;
+	for(j=0;j<3;j++)
+		bval[i][j]=b13[j];
+
+	i=3;
+	for(j=0;j<3;j++)
+		bval[i][j]=b14[j];
+
+	i=4;
+	for(j=0;j<3;j++)
+		bval[i][j]=b15[j];
+
+	i=5;
+	for(j=0;j<3;j++)
+		bval[i][j]=b16[j];
+
+	i=6;
+	for(j=0;j<3;j++)
+		bval[i][j]=b17[j];
+
+
+	i=7;
+	for(j=0;j<3;j++)
+		bval[i][j]=b18[j];
+
+	i=8;
+	for(j=0;j<3;j++)
+		bval[i][j]=b19[j];
+
+
+
+}
