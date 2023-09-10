@@ -1,5 +1,6 @@
 #include<cmath>
 #include<iostream>
+#include "6rik.h"
 using namespace std;
 
 int main()
@@ -31,13 +32,15 @@ int main()
 	q = (-ly*a6 - ((my*meu6+ny*lam6)*d6) + py);
 	r = (-lz*a6 - ((mz*meu6+nz*lam6)*d6) + pz);
 
+	double u_r[]={u,v,w,p,q,r};
+
 	double aval[9][3],bval[9][3],cval[9][3],dval[9][3],eval[9][3],fval[9][3];
-	aexp(aval);
-	bexp(bval);
-	cexp(cval);
-	dexp(dval);
-	eexp(eval);
-	fexp(fval);
+	aexp(aval,meu,lam,a,d,u_r);
+	bexp(bval,meu,lam,a,d,u_r);
+	cexp(cval,meu,lam,a,d,u_r);
+	dexp(dval,meu,lam,a,d,u_r);
+	eexp(eval,meu,lam,a,d,u_r);
+	fexp(fval,meu,lam,a,d,u_r);
 	//arr is the required square matrix
 	double arr[12][12];
 	for(int i=0;i<12;i++)

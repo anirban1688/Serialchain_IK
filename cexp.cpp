@@ -407,40 +407,40 @@ double c11[]={-(d1*lam2*lam3*lam4*lam5*meu1*p*u) + d1*lam4*lam5*meu1*meu2*meu3*p
 
 i=0;
     for(j=0;j<3;j++)
-        aval[i][j]=a11[j];
+        cval[i][j]=c11[j];
 
     i=1;
     for(j=0;j<3;j++)
-        aval[i][j]=a12[j];
+        cval[i][j]=c12[j];
 
     i=2;
     for(j=0;j<3;j++)
-        aval[i][j]=a13[j];
+        cval[i][j]=c13[j];
 
     i=3;
     for(j=0;j<3;j++)
-        aval[i][j]=a14[j];
+        cval[i][j]=c14[j];
 
     i=4;
     for(j=0;j<3;j++)
-        aval[i][j]=a15[j];
+        cval[i][j]=c15[j];
 
     i=5;
     for(j=0;j<3;j++)
-        aval[i][j]=a16[j];
+        cval[i][j]=c16[j];
 
     i=6;
     for(j=0;j<3;j++)
-        aval[i][j]=a17[j];
+        cval[i][j]=c17[j];
 
 
     i=7;
     for(j=0;j<3;j++)
-        aval[i][j]=a18[j];
+        cval[i][j]=c18[j];
 
     i=8;
     for(j=0;j<3;j++)
-        aval[i][j]=a19[j];
+        cval[i][j]=c19[j];
 
 
 }

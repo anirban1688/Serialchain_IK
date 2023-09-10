@@ -34,40 +34,40 @@ double f19[]={2*a1*a2*lam1*lam2*lam3*lam4*lam5*meu1 + 2*a1*a3*lam1*lam2*lam3*lam
 
 i=0;
 	for(j=0;j<3;j++)
-		aval[i][j]=a11[j];
+		fval[i][j]=f11[j];
 
 	i=1;
 	for(j=0;j<3;j++)
-		aval[i][j]=a12[j];
+		fval[i][j]=f12[j];
 
 	i=2;
 	for(j=0;j<3;j++)
-		aval[i][j]=a13[j];
+		fval[i][j]=f13[j];
 
 	i=3;
 	for(j=0;j<3;j++)
-		aval[i][j]=a14[j];
+		fval[i][j]=f14[j];
 
 	i=4;
 	for(j=0;j<3;j++)
-		aval[i][j]=a15[j];
+		fval[i][j]=f15[j];
 
 	i=5;
 	for(j=0;j<3;j++)
-		aval[i][j]=a16[j];
+		fval[i][j]=f16[j];
 
 	i=6;
 	for(j=0;j<3;j++)
-		aval[i][j]=a17[j];
+		fval[i][j]=f17[j];
 
 
 	i=7;
 	for(j=0;j<3;j++)
-		aval[i][j]=a18[j];
+		fval[i][j]=f18[j];
 
 	i=8;
 	for(j=0;j<3;j++)
-		aval[i][j]=a19[j];
+		fval[i][j]=f19[j];
  
 
  }

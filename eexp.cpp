@@ -30,40 +30,40 @@ double e19[]={-2*a2*d5*lam5*pow(meu1,2) - 2*a3*d5*lam5*pow(meu1,2) - 2*a4*d5*lam
 
 i=0;
 	for(j=0;j<3;j++)
-		aval[i][j]=a11[j];
+		eval[i][j]=e11[j];
 
 	i=1;
 	for(j=0;j<3;j++)
-		aval[i][j]=a12[j];
+		eval[i][j]=e12[j];
 
 	i=2;
 	for(j=0;j<3;j++)
-		aval[i][j]=a13[j];
+		eval[i][j]=e13[j];
 
 	i=3;
 	for(j=0;j<3;j++)
-		aval[i][j]=a14[j];
+		eval[i][j]=e14[j];
 
 	i=4;
 	for(j=0;j<3;j++)
-		aval[i][j]=a15[j];
+		eval[i][j]=e15[j];
 
 	i=5;
 	for(j=0;j<3;j++)
-		aval[i][j]=a16[j];
+		eval[i][j]=e16[j];
 
 	i=6;
 	for(j=0;j<3;j++)
-		aval[i][j]=a17[j];
+		eval[i][j]=e17[j];
 
 
 	i=7;
 	for(j=0;j<3;j++)
-		aval[i][j]=a18[j];
+		eval[i][j]=e18[j];
 
 	i=8;
 	for(j=0;j<3;j++)
-		aval[i][j]=a19[j];
+		eval[i][j]=e19[j];
 
 
 }

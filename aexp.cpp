@@ -2,7 +2,7 @@
 # include <math.h>
 
 //aexp(double a11[3],double a12[3],double a13[3],double a14[3],double a15[3],double a16[3],double a17[3],double a18[3],double a19[3])
-aexp(double aval[9][3])
+aexp(double aval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
 {
 	double a11[]={-2*a1*lam2*lam3*lam4*lam5*pow(p,2) + 2*a1*lam4*lam5*meu2*meu3*pow(p,2) - 
 2*a1*lam3*lam5*meu2*meu4*pow(p,2) - 2*a1*lam2*lam5*meu3*meu4*pow(p,2) + 2*a1*lam3*lam4*meu2*meu5*pow(p,2) + 
