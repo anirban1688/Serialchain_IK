@@ -3,7 +3,7 @@
 
 
 //bexp(double b11[3],double b12[3],double b13[3],double b14[3],double b15[3],double b16[3],double b17[3],double b18[3],double b19[3])
-bexp(double bval[9][3])
+bexp(double bval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
 {
 
 double b11[]={-(a1*lam2*lam3*lam4*lam5*p*u) + a1*lam4*lam5*meu2*meu3*p*u - a1*lam3*lam5*meu2*meu4*p*u - 
