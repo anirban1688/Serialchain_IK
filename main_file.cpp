@@ -102,7 +102,7 @@ int main()
 		j++;
 	}
 	j=0;
-	for(int i=;i<12;i++)
+	for(int i=3;i<12;i++)
 	{
 		arr[11][i]=fval[j];
 		j++;
@@ -115,7 +115,7 @@ int main()
 			{cval[0][j],cval[1][j],cval[2][j],cval[3][j],cval[4][j],cval[5][j],cval[6][j],cval[7][j],cval[8][j]},
 			{dval[0][j],dval[1][j],dval[2][j],dval[3][j],dval[4][j],dval[5][j],dval[6][j],dval[7][j],dval[8][j]},
 			{eval[0][j],eval[1][j],eval[2][j],eval[3][j],eval[4][j],eval[5][j],eval[6][j],eval[7][j],eval[8][j]},
-			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]},
+			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]}}
           
 
 	j=1;
@@ -124,7 +124,7 @@ int main()
 			{cval[0][j],cval[1][j],cval[2][j],cval[3][j],cval[4][j],cval[5][j],cval[6][j],cval[7][j],cval[8][j]},
 			{dval[0][j],dval[1][j],dval[2][j],dval[3][j],dval[4][j],dval[5][j],dval[6][j],dval[7][j],dval[8][j]},
 			{eval[0][j],eval[1][j],eval[2][j],eval[3][j],eval[4][j],eval[5][j],eval[6][j],eval[7][j],eval[8][j]},
-			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]},
+			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]}}
           
 
 	
@@ -134,8 +134,39 @@ int main()
 			{cval[0][j],cval[1][j],cval[2][j],cval[3][j],cval[4][j],cval[5][j],cval[6][j],cval[7][j],cval[8][j]},
 			{dval[0][j],dval[1][j],dval[2][j],dval[3][j],dval[4][j],dval[5][j],dval[6][j],dval[7][j],dval[8][j]},
 			{eval[0][j],eval[1][j],eval[2][j],eval[3][j],eval[4][j],eval[5][j],eval[6][j],eval[7][j],eval[8][j]},
-			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]},
-          
+			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]}}
+	//constructing the diagonal matrix named diag
+	diag[12][12]=0
+	for(int i=0;i<6;i++)
+		{
+			for(int j=0;j<9;j++)
+				{
+					diag[i][j]=sigma1[i][j];
+				}
+		}
+          for(int i=0;i<6;i++)
+		  { 
+			for(int j=9;j<12;j++)
+				{
+					diag[i][j]=0;
+				}
+		  }
+	
+          for(int i=6;i<12;i++)
+		  { 
+			for(int j=0;j<4;j++)
+				{
+					diag[i][j]=0;
+				}
+		  }
+	  
+          for(int i=6;i<12;i++)
+		  { 
+			for(int j=4;j<12;j++)
+				{
+					diag[i][j]=sigma1[i][j];
+				}
+		  }
 
 	return 0;
 }
