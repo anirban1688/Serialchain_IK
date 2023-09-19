@@ -135,20 +135,27 @@ int main()
 			{dval[0][j],dval[1][j],dval[2][j],dval[3][j],dval[4][j],dval[5][j],dval[6][j],dval[7][j],dval[8][j]},
 			{eval[0][j],eval[1][j],eval[2][j],eval[3][j],eval[4][j],eval[5][j],eval[6][j],eval[7][j],eval[8][j]},
 			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]}}
-	//constructing the diagonal matrix named diag
-	diag[12][12]=0
+	//diagonal matrix A
+	float A[12][12];
+       for(int i=0;i<12;i++)
+		{
+			for(int j=0;j<12;j++)
+				{
+					A[i][j]=0;
+				}
+		}
 	for(int i=0;i<6;i++)
 		{
 			for(int j=0;j<9;j++)
 				{
-					diag[i][j]=sigma1[i][j];
+					A[i][j]=sigma1[i][j];
 				}
 		}
           for(int i=0;i<6;i++)
 		  { 
 			for(int j=9;j<12;j++)
 				{
-					diag[i][j]=0;
+					A[i][j]=0;
 				}
 		  }
 	
@@ -156,7 +163,7 @@ int main()
 		  { 
 			for(int j=0;j<4;j++)
 				{
-					diag[i][j]=0;
+					A[i][j]=0;
 				}
 		  }
 	  
@@ -164,9 +171,87 @@ int main()
 		  { 
 			for(int j=4;j<12;j++)
 				{
-					diag[i][j]=sigma1[i][j];
+					A[i][j]=sigma1[i][j];
 				}
 		  }
+//B diagonal matrix
 
+		float B[12][12];
+       for(int i=0;i<12;i++)
+		{
+			for(int j=0;j<12;j++)
+				{
+					B[i][j]=0;
+				}
+		}
+	for(int i=0;i<6;i++)
+		{
+			for(int j=0;j<9;j++)
+				{
+					B[i][j]=sigma2[i][j];
+				}
+		}
+          for(int i=0;i<6;i++)
+		  { 
+			for(int j=9;j<12;j++)
+				{
+					B[i][j]=0;
+				}
+		  }
+	
+          for(int i=6;i<12;i++)
+		  { 
+			for(int j=0;j<4;j++)
+				{
+					B[i][j]=0;
+				}
+		  }
+	  
+          for(int i=6;i<12;i++)
+		  { 
+			for(int j=4;j<12;j++)
+				{
+					B[i][j]=sigma2[i][j];
+				}
+		  }
+   // diagonal matrix C
+		float C[12][12];
+       for(int i=0;i<12;i++)
+		{
+			for(int j=0;j<12;j++)
+				{
+					C[i][j]=0;
+				}
+		}
+	for(int i=0;i<6;i++)
+		{
+			for(int j=0;j<9;j++)
+				{
+					C[i][j]=sigma3[i][j];
+				}
+		}
+          for(int i=0;i<6;i++)
+		  { 
+			for(int j=9;j<12;j++)
+				{
+					C[i][j]=0;
+				}
+		  }
+	
+          for(int i=6;i<12;i++)
+		  { 
+			for(int j=0;j<4;j++)
+				{
+					C[i][j]=0;
+				}
+		  }
+	  
+          for(int i=6;i<12;i++)
+		  { 
+			for(int j=4;j<12;j++)
+				{
+					C[i][j]=sigma3[i][j];
+				}
+		  }
 	return 0;
 }
