@@ -312,6 +312,34 @@ int main()
 				    O[i][j]=0;
 			    }
 		}
+	for (int i=0; i<12; ++i){
+              for(int j=0; i<12; ++j)
+                    M.coeff(i,j) =O[i][j];
+                           }
 	
+	for (int i=0; i<12; ++i){
+               for(int j=12; i<24; ++j)
+                       M.coeff(i,j) =I[i][j];
+                           }
+	int k,l=0;
+	for (int i=12; i<24; ++i)
+	{
+            for(int j=0; i<12; ++j){
+               M.coeff(i,j) = M10.coeff(k,l);
+		    l++;
+	    }
+		k++;
+	}
+	k=0;
+	l=0;
+	for (int i=12; i<24; ++i)
+	{
+            for(int j=12; i<24; ++j){
+               M.coeff(i,j) = M11.coeff(k,l);
+		    l++;
+	    }
+		k++;
+	}
+	//matrix M has been created
 	return 0;
 }
