@@ -1,13 +1,13 @@
 CC=g++
 
-OBJS=ik6r.o aexp.o bexp.o cexp.o dexp.o eexp.o fexp.o
+OBJS=6rik.o aexp.o bexp.o cexp.o dexp.o eexp.o fexp.o
 all: out
 	@echo "all"
 out: $(OBJS)	
 	$(CC) -pg -Wall -I/usr/include -L/usr/local/lib -o out $(OBJS) -lgsl -lgslcblas -lm -O2
 
-6rik.o: ik6r.cpp
-	$(CC) -pg -c ik6r.cpp -lm
+6rik.o: 6rik.cpp
+	$(CC) -pg -c 6rik.cpp -lm
 
 aexp.o: aexp.cpp
 	$(CC) -pg -c aexp.cpp -lm
