@@ -1,9 +1,10 @@
 # include <iostream>
+# include "ik6r.h"
 # include <math.h>
 
 
 //cexp(double c11[3],double c12[3],double c13[3],double c14[3],double c15[3],double c16[3],double c17[3],double c18[3],double c19[3])
-cexp(double cval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
+void cexp(double cval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
 {
     int i,j;
     double meu1=meu[0];

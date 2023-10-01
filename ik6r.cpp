@@ -5,8 +5,12 @@
 #define pi 3.1428
 using namespace std;
 
+//void bexp(double[9][3],double[6],double[6],double[6],double[6],double[6]);
+
 int main()
 {
+	//void bexp(double[9][3],double[6],double[6],double[6],double[6],double[6]);
+
 	int i,j;
 	double alpha[6], d[6], a[6];
 	double dr=(pi/180);

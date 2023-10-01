@@ -3,9 +3,11 @@
 # include <math.h>
 
 
-//bexp(double b11[3],double b12[3],double b13[3],double b14[3],double b15[3],double b16[3],double b17[3],double b18[3],double b19[3])
-bexp(double bval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
+//void bexp(double bval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
+void bexp(double bval[9][3],double meu[6],double lam[6],double a[6],double d[6],double u_r[6])
 {
+	
+
 	int i,j;
 	double meu1=meu[0];
 	double meu2=meu[1];
@@ -36,12 +38,12 @@ bexp(double bval[9][3],double meu[6],double lam[6],double a[6],double d[6],doubl
 	double d5=d[4];
 	double d6=d[5];
 
-double u= u_r[0];
-double v= u_r[1];
-double w= u_r[2];
-double p= u_r[3];
-double q= u_r[4];
-double r= u_r[5];
+	double u= u_r[0];
+	double v= u_r[1];
+	double w= u_r[2];
+	double p= u_r[3];
+	double q= u_r[4];
+	double r= u_r[5];
 
 
 
@@ -336,7 +338,6 @@ a1*lam1*p*u*w - d1*meu1*q*u*w + meu1*q*r*u*w + d1*meu1*p*v*w + a1*lam1*q*v*w - m
 	i=8;
 	for(j=0;j<3;j++)
 		bval[i][j]=b19[j];
-
 
 
 }
