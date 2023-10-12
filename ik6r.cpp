@@ -1,6 +1,12 @@
 #include<cmath>
 #include<iostream>
-//#include<Eigen>
+#include<iomanip>
+//#include "../6r_ik/eigen-3.4.0"
+//#include<eigen3>
+#include <gsl/gsl_blas.h>
+#include <gsl/gsl_math.h>
+#include <gsl/gsl_linalg.h>
+#include <gsl/gsl_eigen.h>
 #include "ik6r.h"
 #define pi 3.1428
 using namespace std;
@@ -12,7 +18,7 @@ int main()
 	//void bexp(double[9][3],double[6],double[6],double[6],double[6],double[6]);
 
 	int i,j;
-	double alpha[6], d[6], a[6];
+	double alpha[6];
 	double dr=(pi/180);
 	double u,v,w,p,q,r;
 	
@@ -60,6 +66,8 @@ int main()
 
 	double meu[]={meu1,meu2,meu3,meu4,meu5,meu6};
 	double lam[]={lam1,lam2,lam3,lam4,lam5,lam6};
+	double a[]={a1,a2,a3,a4,a5,a6};
+	double d[]={d1,d2,d3,d4,d5,d6};
 
 	 u = (mx*meu6+nx*lam6);
 	 v = (my*meu6+ny*lam6);
@@ -78,73 +86,17 @@ int main()
 	dexp(dval,meu,lam,a,d,u_r);
 	eexp(eval,meu,lam,a,d,u_r);
 	fexp(fval,meu,lam,a,d,u_r);
-	//arr is the required square matrix
-	/*double arr[12][12];
-	for(int i=0;i<12;i++)
+	
+	for(i=0;i<6;i++)
+		cout<<" "<<meu[i]<<" "<<lam[i]<<" "<<a[i]<<" "<<d[i]<<" "<<u_r[i] <<endl;
+	
+	for(i=0;i<9;i++)
 	{
-		for(int j=0;j<12;j++)
-		{
-			arr[i][j]=0;
-		}
+		for(j=0;j<3;j++)
+			cout<<setprecision(8)<<aval[i][j]<<" ";
+		cout<<endl;
 	}
-	for(int i=0;i<9;i++)
-		arr[0][i]=aval[i];
-
-    for(int i=0;i<9;i++)
-		arr[1][i]=bval[i];
-
-	for(int i=0;i<9;i++)
-		arr[2][i]=cval[i];
-
-	for(int i=0;i<9;i++)
-		arr[3][i]=dval[i];
-		
-	for(int i=0;i<9;i++)
-	{
-		arr[4][i]=eval[i];
-	}
-	for(int i=0;i<9;i++)
-	{
-		arr[5][i]=fval[i];
-	}
-	int j=0;
-    for(int i=3;i<12;i++)
-	{
-		arr[6][i]=aval[j];
-		j++;
-	}
-	j=0;
-    for(int i=3;i<12;i++)
-	{
-		arr[7][i]=bval[j];
-		j++;
-	}
-	j=0;
-	for(int i=3;i<12;i++)
-	{
-		arr[8][i]=cval[j];
-		j++;
-		
-	}
-	j=0;
-	for(int i=3;i<12;i++)
-	{
-		arr[9][i]=dval[j];
-		j++;
-	}
-	j=0;
-	for(int i=3;i<12;i++)
-	{
-		arr[10][i]=eval[j];
-		j++;
-	}
-	j=0;
-	for(int i=3;i<12;i++)
-	{
-		arr[11][i]=fval[j];
-		j++;
-	}*/
-
+	
 	
 	j=0;
 	double sigma1[6][9] ={{aval[0][j],aval[1][j],aval[2][j],aval[3][j],aval[4][j],aval[5][j],aval[6][j],aval[7][j],aval[8][j]},
@@ -173,7 +125,7 @@ int main()
 			{eval[0][j],eval[1][j],eval[2][j],eval[3][j],eval[4][j],eval[5][j],eval[6][j],eval[7][j],eval[8][j]},
 			{fval[0][j],fval[1][j],fval[2][j],fval[3][j],fval[4][j],fval[5][j],fval[6][j],fval[7][j],fval[8][j]}};
 	//diagonal matrix A
-	double A[12][12];
+       double A[12][12];
        for(int i=0;i<12;i++)
 		{
 			for(int j=0;j<12;j++)
@@ -213,7 +165,7 @@ int main()
 		  }
 //B diagonal matrix
 
-		float B[12][12];
+       double B[12][12];
        for(i=0;i<12;i++)
 		{
 			for(j=0;j<12;j++)
@@ -252,7 +204,7 @@ int main()
 				}
 		  }
    // diagonal matrix C
-		float C[12][12];
+       double C[12][12];
        for(i=0;i<12;i++)
 		{
 			for(j=0;j<12;j++)
@@ -290,48 +242,91 @@ int main()
 					C[i][j]=sigma3[i][j];
 				}
 		  }
-    /*  Eigen::Matrix12f Ax;
-	Ax<<   A[0][0],A[0][1],A[0][2],A[0][3],A[0][4],A[0][5],A[0][6],A[0][7],A[0][8],A[0][9],A[0][10],A[0][11],
-		A[1][0],A[1][1],A[1][2],A[1][3],A[1][4],A[1][5],A[1][6],A[1][7],A[1][8],A[1][9],A[1][10],A[1][11],
-		A[2][0],A[2][1],A[2][2],A[2][3],A[2][4],A[2][5],A[2][6],A[2][7],A[2][8],A[2][9],A[2][10],A[2][11],
-		A[3][0],A[3][1],A[3][2],A[3][3],A[3][4],A[3][5],A[3][6],A[3][7],A[3][8],A[3][9],A[3][10],A[3][11],
-		A[4][0],A[4][1],A[4][2],A[4][3],A[4][4],A[4][5],A[4][6],A[4][7],A[4][8],A[4][9],A[4][10],A[4][11],
-		A[5][0],A[5][1],A[5][2],A[5][3],A[5][4],A[5][5],A[5][6],A[5][7],A[5][8],A[5][9],A[5][10],A[5][11],
-		A[6][0],A[6][1],A[6][2],A[6][3],A[6][4],A[6][5],A[6][6],A[6][7],A[6][8],A[6][9],A[6][10],A[6][11],
-		A[7][0],A[7][1],A[7][2],A[7][3],A[7][4],A[7][5],A[7][6],A[7][7],A[7][8],A[7][9],A[7][10],A[7][11],
-		A[8][0],A[8][1],A[8][2],A[8][3],A[8][4],A[8][5],A[8][6],A[8][7],A[8][8],A[8][9],A[8][10],A[8][11],
-		A[9][0],A[9][1],A[9][2],A[9][3],A[9][4],A[9][5],A[9][6],A[9][7],A[9][8],A[9][9],A[9][10],A[9][11],
-		A[10][0],A[10][1],A[10][2],A[10][3],A[10][4],A[10][5],A[10][6],A[10][7],A[10][8],A[10][9],A[10][10],A[10][11],
-		A[11][0],A[11][1],A[11][2],A[11][3],A[11][4],A[11][5],A[11][6],A[11][7],A[11][8],A[11][9],A[11][10],A[11][11];
+		  
+		  
+    /*gsl_matrix *Amat = gsl_matrix_alloc(12,12);
+    for(i=0;i<12;i++)
+    	for(j=0;j<12;j++)
+    		gsl_matrix_set(Amat,i,j,A[i][j]);*/
+    		
+    double adata[144];
+    int count=0;
+    for(i=0;i<12;i++)
+    	for(j=0;j<12;j++)
+    		adata[count++]=A[i][j];
+    		
+    gsl_matrix_view Amat
+          = gsl_matrix_view_array(adata, 12, 12);
+    		
+    double bdata[144];	
+    count=0;    
+    for(i=0;i<12;i++)
+    	for(j=0;j<12;j++)
+    		bdata[count++]=B[i][j];
+    		
+    gsl_matrix_view Bmat
+          = gsl_matrix_view_array(bdata, 12, 12);
+    		
+    		
+    double cdata[144];	
+    count=0;    
+    for(i=0;i<12;i++)
+    	for(j=0;j<12;j++)
+    		cdata[count++]=C[i][j];
+    		
+    gsl_matrix_view Cmat
+          = gsl_matrix_view_array(cdata, 12, 12);
+    		
+    double m10[144],negm10[144],m11[144],negm11[144];
+    for(i=0;i<144;i++)
+    	{
+    		m10[i]=0;
+    		negm10[i]=0;
+    		m11[i]=0;
+    		negm11[i]=0;
+    	}    		
+    		
+    gsl_matrix_view M10 = gsl_matrix_view_array(m10,12,12);
+    gsl_matrix_view negM10 = gsl_matrix_view_array(negm10,12,12);
+    
+    gsl_matrix_view M11 = gsl_matrix_view_array(m11,12,12);
+    gsl_matrix_view negM11 = gsl_matrix_view_array(negm11,12,12);
+    
+    //gsl_matrix *m11 = gsl_matrix_alloc(12,12);     
+    //gsl_matrix *Ainv = gsl_matrix_alloc(12,12); 
+    
+    double inva[144]; 
+    
+    gsl_permutation * p1 = gsl_permutation_alloc (12);
+    int s;
+    
+    gsl_matrix_view invA
+          = gsl_matrix_view_array(inva,12,12);
+          
+    cout<<" \n Matrix M10: \n";
+     for(i=0;i<12;i++)
+     {
+     	for(j=0;j<12;j++)
+     		cout<<adata[(12*i)+j]<<" ";
+     	cout<<endl;
+     }
+ 	
+     
+ 
+     gsl_linalg_LU_decomp (&Amat.matrix, p1, &s);    
+     gsl_linalg_LU_invert (&Amat.matrix, p1, &invA.matrix);
+    
+      
 	
-      Eigen::Matrix12f Bx;
-	Bx<<   B[0][0],B[0][1],B[0][2],B[0][3],B[0][4],B[0][5],B[0][6],B[0][7],B[0][8],B[0][9],B[0][10],B[0][11],
-		B[1][0],B[1][1],B[1][2],B[1][3],B[1][4],B[1][5],B[1][6],B[1][7],B[1][8],B[1][9],B[1][10],B[1][11],
-		B[2][0],B[2][1],B[2][2],B[2][3],B[2][4],B[2][5],B[2][6],B[2][7],B[2][8],B[2][9],B[2][10],B[2][11],
-		B[3][0],B[3][1],B[3][2],B[3][3],B[3][4],B[3][5],B[3][6],B[3][7],B[3][8],B[3][9],B[3][10],B[3][11],
-		B[4][0],B[4][1],B[4][2],B[4][3],B[4][4],B[4][5],B[4][6],B[4][7],B[4][8],B[4][9],B[4][10],B[4][11],
-		B[5][0],B[5][1],B[5][2],B[5][3],B[5][4],B[5][5],B[5][6],B[5][7],B[5][8],B[5][9],B[5][10],B[5][11],
-		B[6][0],B[6][1],B[6][2],B[6][3],B[6][4],B[6][5],B[6][6],B[6][7],B[6][8],B[6][9],B[6][10],B[6][11],
-		B[7][0],B[7][1],B[7][2],B[7][3],B[7][4],B[7][5],B[7][6],B[7][7],B[7][8],B[7][9],B[7][10],B[7][11],
-		B[8][0],B[8][1],B[8][2],B[8][3],B[8][4],B[8][5],B[8][6],B[8][7],B[8][8],B[8][9],B[8][10],B[8][11],
-		B[9][0],B[9][1],B[9][2],B[9][3],B[9][4],B[9][5],B[9][6],B[9][7],B[9][8],B[9][9],B[9][10],B[9][11],
-		B[10][0],B[10][1],B[10][2],B[10][3],B[10][4],B[10][5],B[10][6],B[10][7],B[10][8],B[10][9],B[10][10],B[10][11],
-		B[11][0],B[11][1],B[11][2],B[11][3],B[11][4],B[11][5],B[11][6],B[11][7],B[11][8],B[11][9],B[11][10],B[11][11];
-	
-      Eigen::Matrix12f Cx;
-	Cx<<   C[0][0],C[0][1],C[0][2],C[0][3],C[0][4],C[0][5],C[0][6],C[0][7],C[0][8],C[0][9],C[0][10],C[0][11],
-		C[1][0],C[1][1],C[1][2],C[1][3],C[1][4],C[1][5],C[1][6],C[1][7],C[1][8],C[1][9],C[1][10],C[1][11],
-		C[2][0],C[2][1],C[2][2],C[2][3],C[2][4],C[2][5],C[2][6],C[2][7],C[2][8],C[2][9],C[2][10],C[2][11],
-		C[3][0],C[3][1],C[3][2],C[3][3],C[3][4],C[3][5],C[3][6],C[3][7],C[3][8],C[3][9],C[3][10],C[3][11],
-		C[4][0],C[4][1],C[4][2],C[4][3],C[4][4],C[4][5],C[4][6],C[4][7],C[4][8],C[4][9],C[4][10],C[4][11],
-		C[5][0],C[5][1],C[5][2],C[5][3],C[5][4],C[5][5],C[5][6],C[5][7],C[5][8],C[5][9],C[5][10],C[5][11],
-		C[6][0],C[6][1],C[6][2],C[6][3],C[6][4],C[6][5],C[6][6],C[6][7],C[6][8],C[6][9],C[6][10],C[6][11],
-		C[7][0],C[7][1],C[7][2],C[7][3],C[7][4],C[7][5],C[7][6],C[7][7],C[7][8],C[7][9],C[7][10],C[7][11],
-		C[8][0],C[8][1],C[8][2],C[8][3],C[8][4],C[8][5],C[8][6],C[8][7],C[8][8],C[8][9],C[8][10],C[8][11],
-		C[9][0],C[9][1],C[9][2],C[9][3],C[9][4],C[9][5],C[9][6],C[9][7],C[9][8],C[9][9],C[9][10],C[9][11],
-		C[10][0],C[10][1],C[10][2],C[10][3],C[10][4],C[10][5],C[10][6],C[10][7],C[10][8],C[10][9],C[10][10],C[10][11],
-		C[11][0],C[11][1],C[11][2],C[11][3],C[11][4],C[11][5],C[11][6],C[11][7],C[11][8],C[11][9],C[11][10],C[11][11];
-	Eigen::Matrix24f M;
+     gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, &invA.matrix, &Cmat.matrix, 0.0, &M10.matrix);
+     gsl_blas_dgemm (CblasNoTrans, CblasNoTrans, 1.0, &invA.matrix, &Bmat.matrix, 0.0, &M11.matrix);
+     
+     gsl_matrix_sub(&negM10.matrix,&M10.matrix);
+     gsl_matrix_sub(&negM11.matrix,&M11.matrix);
+     
+     
+      
+	/*Eigen::Matrix24f M;
 	M10= -Ax.inverse()*C;
 	M11= -Ax.inverse()*B;
 	float I[12][12],O[12][12];
