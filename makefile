@@ -4,7 +4,7 @@ OBJS=ik6r.o aexp.o bexp.o cexp.o dexp.o eexp.o fexp.o
 all: out
 	@echo "all"
 out: $(OBJS)	
-	$(CC) -pg -Wall -I/usr/include -L/usr/local/lib -o out $(OBJS) -lgsl -lgslcblas -lm -O2
+	$(CC) -pg -Wall -I /usr/include -L/usr/local/lib -o out $(OBJS) -lgsl -lgslcblas -lm -O2
 
 6rik.o: ik6r.cpp
 	$(CC) -pg -c ik6r.cpp -lm
