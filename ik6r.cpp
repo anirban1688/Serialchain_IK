@@ -11,7 +11,7 @@
 #define pi 3.1428
 using namespace std;
 
-//void bexp(double[9][3],double[6],double[6],double[6],double[6],double[6]);
+
 
 int main()
 {
@@ -328,8 +328,8 @@ int main()
       
 	/*Eigen::Matrix24f M;
 	M10= -Ax.inverse()*C;
-	M11= -Ax.inverse()*B;
-	float I[12][12],O[12][12];
+	M11= -Ax.inverse()*B;*/
+	double I[12][12],O[12][12], M[24][24];
 	for(int i=0;i<12;i++)
 		{
 		    for(int j=0;j<12;j++)
@@ -344,33 +344,78 @@ int main()
 			    }
 		}
 	for (int i=0; i<12; ++i){
-              for(int j=0; i<12; ++j)
-                    M.coeff(i,j) =O[i][j];
+              for(int j=0; j<12; ++j)
+                    M[i][j] =O[i][j];
                            }
 	
 	for (int i=0; i<12; ++i){
-               for(int j=12; i<24; ++j)
-                       M.coeff(i,j) =I[i][j];
+               for(int j=12; j<24; ++j)
+                       M[i][j] =I[i][j-12];
                            }
-	int k,l=0;
+	int k=0,l=0;
 	for (int i=12; i<24; ++i)
 	{
             for(int j=0; i<12; ++j){
-               M.coeff(i,j) = M10.coeff(k,l);
+               M[i][j] = m10[(12*k)+l];
 		    l++;
 	    }
 		k++;
+		l=0;
 	}
+	
 	k=0;
 	l=0;
 	for (int i=12; i<24; ++i)
 	{
-            for(int j=12; i<24; ++j){
-               M.coeff(i,j) = M11.coeff(k,l);
+            for(int j=12; j<24; ++j){
+               M[i][j] = m11[(12*k)+l];
 		    l++;
 	    }
 		k++;
-	}*/
-	//matrix M has been created
+		l=0;
+	}
+	
+       double data[24*24];
+       
+       count=0;
+       for(i=0;i<24;i++)
+       {
+       		for(j=0;j<24;j++)
+       		data[count++]=M[i][j];
+       		}
+	
+       gsl_matrix_view m 
+         = gsl_matrix_view_array (data, 24, 24);
+     
+       gsl_vector *eigval = gsl_vector_alloc (24);
+       gsl_matrix *evec = gsl_matrix_alloc (24, 24);
+     
+       gsl_eigen_symmv_workspace * w1 = 
+         gsl_eigen_symmv_alloc (24);
+       
+       gsl_eigen_symmv (&m.matrix, eigval, evec, w1);
+     
+       gsl_eigen_symmv_free (w1);
+     
+       gsl_eigen_symmv_sort (eigval, evec, 
+                             GSL_EIGEN_SORT_ABS_ASC);
+       
+       
+        
+     
+         for (i = 0; i < 24; i++)
+           {
+             double eigval_i 
+                = gsl_vector_get (eigval, i);
+             gsl_vector_view evec_i 
+                = gsl_matrix_column (evec, i);
+     
+             //printf ("eigenvalue = %g\n", eigval_i);
+             //printf ("eigenvector = \n");
+             //gsl_vector_fprintf (stdout, 
+             //                    &evec_i.vector, "%g");
+           }
+       
+	
 	return 0;
 }
